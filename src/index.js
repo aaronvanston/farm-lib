@@ -1,28 +1,11 @@
 import Farm from './Farm/Farm'
 import producers from './catalogue/producers'
 import products from './catalogue/products'
+import sellers from './catalogue/sellers'
 
-console.log('init')
-const farmLib = new Farm(producers, products)
+const onTick = data => console.log(data)
 
-farmLib.buy('chicken')
-
-farmLib.produce()
-farmLib.produce()
-farmLib.produce()
-farmLib.produce()
-farmLib.produce()
-
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
-farmLib.sell('egg')
+const farmLib = new Farm({ producers, products, sellers }, onTick)
 
 farmLib.buy('chicken')
 
