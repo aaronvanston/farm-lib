@@ -1,5 +1,6 @@
 import { getProduct, getProducer, getSeller } from '../utils/getters'
 import updateQuantity from '../utils/updateQuantity'
+import message from '../utils/message'
 
 import config from '../config'
 
@@ -36,18 +37,17 @@ export default class Farm {
     const producerInfo = getProducer(producer, this.producers)
 
     if (!producerInfo) {
-      console.log(`Cannot find ${producer}`)
-      return false
+      return message(`Cannot find ${producer}`, false)
     }
 
-    if (this.farmBank >= producerInfo.cost) {
-      this.farmBank -= producerInfo.cost
-      this.farmProducers = updateQuantity(this.farmProducers, producer, 1)
-
-      console.log(`Bought ${producer}`)
-    } else {
-      console.log('Not enough money')
+    if (this.bank >= producerInfo.cost) {
+      return message('Not enough money', false)
     }
+
+    this.farmBank -= producerInfo.cost
+    this.farmProducers = updateQuantity(this.farmProducers, producer, 1)
+
+    return message(`Bought ${producer}`, true)
   }
 
   sell(product, quantity = 1) {
@@ -55,8 +55,7 @@ export default class Farm {
 
     // Does product exist?
     if (!productInfo) {
-      console.log(`Cannot find ${product}`)
-      return false
+      return message(`Cannot find ${product}`, false)
     }
 
     // Is there enough product to sell?
@@ -64,12 +63,12 @@ export default class Farm {
       !this.farmProducts[product] >= quantity ||
       this.farmProducts[product] == undefined
     ) {
-      console.log(`You dont have enough ${product}s to sell`)
-      return false
+      return message(`You dont have enough ${product}s to sell`, false)
     }
 
     this.farmBank += productInfo.value * quantity
     this.farmProducts = updateQuantity(this.farmProducts, product, -quantity)
+    return message(`Sold ${product} (x${quantity})`, true)
   }
 
   produce() {
@@ -97,6 +96,7 @@ export default class Farm {
       const sellerInfo = getSeller(sellerName, this.sellers)
       const productToSell = sellerInfo.products.name
       const totalSell = sellerInfo.products.rate * quantity
+
       const availibleProducts = Math.floor(this.farmProducts[productToSell])
       // If total sell exceeds availible, only sell availible
       const maxSell = Math.min(totalSell, availibleProducts)
