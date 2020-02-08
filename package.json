@@ -1,0 +1,16 @@
+{
+  "name": "farm-lib",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/aaronvanston/farm-lib.git",
+  "author": "Aaron Vanston",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "devDependencies": {
+    "@rollup/plugin-run": "^1.2.0",
+    "rollup": "^1.31.0"
+  }
+}
