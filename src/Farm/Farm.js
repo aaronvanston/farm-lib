@@ -14,7 +14,7 @@ export default class Farm {
 
     this.farmProducers = {}
     this.farmSellers = {
-      'for-sale-sign': 2,
+      'for-sale-sign': 1,
     }
     this.farmProducts = {}
     this.farmBank = 1000
@@ -60,7 +60,10 @@ export default class Farm {
     }
 
     // Is there enough product to sell?
-    if (!this.farmProducts[product] > 0) {
+    if (
+      !this.farmProducts[product] >= quantity ||
+      this.farmProducts[product] == undefined
+    ) {
       console.log(`You dont have enough ${product}s to sell`)
       return false
     }

@@ -8,5 +8,6 @@ const onTick = data => console.log(data)
 const farmLib = new Farm({ producers, products, sellers }, onTick)
 
 farmLib.buy('chicken')
+farmLib.sell('egg', 10)
 
 console.log(farmLib.total())
