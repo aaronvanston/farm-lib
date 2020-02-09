@@ -3,7 +3,7 @@ import { Produce } from './products'
 export interface Producer {
   name: ProducerType
   cost: number
-  produces: Produce[]
+  produces: Produce
 }
 
 export enum ProducerType {
