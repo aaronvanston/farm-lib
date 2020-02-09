@@ -9,6 +9,6 @@ export interface Produce {
 }
 
 export enum ProductType {
-  EGG = 'Egg',
-  MILK = 'Milk',
+  EGG = 'egg',
+  MILK = 'milk',
 }

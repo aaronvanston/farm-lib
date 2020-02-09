@@ -7,6 +7,6 @@ export interface Producer {
 }
 
 export enum ProducerType {
-  CHICKEN = 'Chicken',
-  COW = 'Cow',
+  CHICKEN = 'chicken',
+  COW = 'cow',
 }

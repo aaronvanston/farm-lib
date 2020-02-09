@@ -8,6 +8,6 @@ export interface seller {
 }
 
 export enum SellerType {
-  FOR_SALE_SIGN = 'For sale sign',
-  FAREMR = 'Farmer',
+  FOR_SALE_SIGN = 'for_sale_sign',
+  FARMER = 'farmer',
 }
