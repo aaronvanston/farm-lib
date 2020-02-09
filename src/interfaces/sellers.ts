@@ -3,7 +3,7 @@ import { Produce } from './products'
 export interface Seller {
   name: SellerType
   buyPrice: number
-  miltupler: number
+  multiplier: number
   products: Produce
 }
 

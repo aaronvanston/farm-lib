@@ -1,9 +1,6 @@
-import { FarmProducers, FarmProducts, FarmSellers } from '../interfaces/farm'
+import { FarmStores } from '../interfaces/farm'
 
-type StoreTypes = FarmProducers | FarmProducts | FarmSellers
-type test = FarmProducers[keyof FarmProducers]
-
-const calculateStore = <T extends StoreTypes, K extends keyof T>(
+const calculateStore = <T extends FarmStores, K extends keyof T>(
   store: T,
   item: K,
   quantity: number

@@ -27,7 +27,7 @@ export default class Farm {
 
   constructor(
     { producers, products, sellers }: FarmInfo,
-    handleTick = () => {}
+    handleTick: FarmDay = () => {}
   ) {
     this.products = products
     this.producers = producers

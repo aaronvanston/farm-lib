@@ -14,6 +14,8 @@ export type FarmSellers = {
   [key in SellerType]?: number
 }
 
+export type FarmStores = FarmProducers | FarmProducts | FarmSellers
+
 export type FarmBank = number
 
 export interface FarmInfo {

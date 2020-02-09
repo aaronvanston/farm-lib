@@ -1,4 +1,6 @@
-export default [
+import { Producer } from '../interfaces/producers'
+
+const producers = [
   {
     name: 'chicken',
     cost: 1000,
@@ -10,3 +12,5 @@ export default [
     produces: { name: 'milk', rate: 1 },
   },
 ]
+
+export default producers as Producer[]

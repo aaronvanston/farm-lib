@@ -1,4 +1,6 @@
-export default [
+import { Seller } from '../interfaces/sellers'
+
+const sellers = [
   {
     name: 'for-sale-sign',
     buyPrice: 1000,
@@ -18,3 +20,5 @@ export default [
     },
   },
 ]
+
+export default sellers as Seller[]
