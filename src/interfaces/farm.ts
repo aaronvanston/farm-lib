@@ -1,17 +1,32 @@
-import { ProducerType } from './producers'
-import { ProductType } from './products'
-import { SellerType } from './sellers'
+import { ProducerType, Producer } from './producers'
+import { ProductType, Product } from './products'
+import { SellerType, Seller } from './sellers'
 
 export type FarmProducers = {
-  [key in ProducerType]: number
+  [key in ProducerType]?: number
 }
 
 export type FarmProducts = {
-  [key in ProductType]: number
+  [key in ProductType]?: number
 }
 
 export type FarmSellers = {
-  [key in SellerType]: number
+  [key in SellerType]?: number
 }
 
 export type FarmBank = number
+
+export interface FarmInfo {
+  producers: Producer[]
+  products: Product[]
+  sellers: Seller[]
+}
+
+export type FarmDay = (arg0: FarmTotal) => void
+
+export interface FarmTotal {
+  farmProducers: FarmProducers
+  farmProducts: FarmProducts
+  farmSellers: FarmSellers
+  farmBank: FarmBank
+}

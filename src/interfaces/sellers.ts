@@ -1,6 +1,6 @@
 import { Produce } from './products'
 
-export interface seller {
+export interface Seller {
   name: SellerType
   buyPrice: number
   miltupler: number

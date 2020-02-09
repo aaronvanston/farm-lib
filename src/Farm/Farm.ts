@@ -1,12 +1,34 @@
 import { getProduct, getProducer, getSeller } from '../utils/getters'
 import updateQuantity from '../utils/updateQuantity'
 import message from '../utils/message'
-
 import config from '../config'
 
+import { Producer, ProducerType } from '../interfaces/producers'
+import { Product, ProductType } from '../interfaces/products'
+import { Seller, SellerType } from '../interfaces/sellers'
+import {
+  FarmProducers,
+  FarmProducts,
+  FarmSellers,
+  FarmBank,
+  FarmInfo,
+  FarmDay,
+} from '../interfaces/farm'
+
 export default class Farm {
-  constructor({ producers, products, sellers }, handleTick = () => {}) {
-    // All availible Products and Producers
+  private producers: Producer[]
+  private products: Product[]
+  private sellers: Seller[]
+  private handleTick: FarmDay
+  private farmProducers: FarmProducers
+  private farmSellers: FarmSellers
+  private farmProducts: FarmProducts
+  private farmBank: FarmBank
+
+  constructor(
+    { producers, products, sellers }: FarmInfo,
+    handleTick = () => {}
+  ) {
     this.products = products
     this.producers = producers
     this.sellers = sellers
@@ -17,11 +39,11 @@ export default class Farm {
     this.farmProducts = {}
     this.farmBank = 100000
 
-    this.initialise()
+    this.initialiseClock()
   }
 
-  initialise() {
-    this.interval = setInterval(() => this.onTick(), config.tickRate || 1000)
+  initialiseClock() {
+    setInterval(() => this.onTick(), config.tickRate || 1000)
   }
 
   onTick() {
@@ -30,14 +52,14 @@ export default class Farm {
     this.handleTick(this.total())
   }
 
-  buy(producer) {
+  buy(producer: ProducerType) {
     const producerInfo = getProducer(producer, this.producers)
 
     if (!producerInfo) {
       return message(`Cannot find ${producer}`, false)
     }
 
-    if (this.bank >= producerInfo.cost) {
+    if (this.farmBank >= producerInfo.cost) {
       return message('Not enough money', false)
     }
 
@@ -47,7 +69,7 @@ export default class Farm {
     return message(`Bought ${producer}`, true)
   }
 
-  sell(product, quantity = 1) {
+  sell(product: ProductType, quantity = 1) {
     const productInfo = getProduct(product, this.products)
 
     // Does product exist?
@@ -55,11 +77,9 @@ export default class Farm {
       return message(`Cannot find ${product}`, false)
     }
 
+    // Does the product exist?
     // Is there enough product to sell?
-    if (
-      !this.farmProducts[product] >= quantity ||
-      this.farmProducts[product] == undefined
-    ) {
+    if (this.farmProducts[product] || 0 >= quantity) {
       return message(`You dont have enough ${product}s to sell`, false)
     }
 
@@ -76,7 +96,7 @@ export default class Farm {
 
       // For each producers products
       producerInfo.produces.forEach(product => {
-        const totalQty = product.rate * quantity
+        const totalQty = product.rate * (quantity || 1)
         producedProducts = updateQuantity(
           producedProducts,
           product.type,
