@@ -4,11 +4,8 @@ export interface Product {
 }
 
 export interface Produce {
-  type: ProductType
+  name: ProductType
   rate: number
 }
 
-export enum ProductType {
-  EGG = 'egg',
-  MILK = 'milk',
-}
+export type ProductType = 'egg' | 'milk'

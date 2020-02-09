@@ -7,7 +7,4 @@ export interface Seller {
   products: Produce
 }
 
-export enum SellerType {
-  FOR_SALE_SIGN = 'for_sale_sign',
-  FARMER = 'farmer',
-}
+export type SellerType = 'for_sale_sign' | 'farmer'

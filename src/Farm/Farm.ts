@@ -91,7 +91,10 @@ export default class Farm {
   produce() {
     // for each producer, generate their products into farm products
     for (const [producerName, quantity] of Object.entries(this.farmProducers)) {
-      const producerInfo = getProducer(producerName, this.producers)
+      const producerInfo = getProducer(
+        producerName as ProducerType,
+        this.producers
+      )
 
       // Does producer exist?
       if (!producerInfo) {
@@ -99,11 +102,11 @@ export default class Farm {
       }
 
       const productToProduce = producerInfo.produces
-      const totalQty = productToProduce.rate * (quantity || 1)
+      const totalQty = productToProduce.rate * (quantity || 0)
 
       this.farmProducts = updateQuantity(
         this.farmProducts,
-        productToProduce.type,
+        productToProduce.name,
         totalQty
       )
     }
@@ -112,7 +115,7 @@ export default class Farm {
   consume() {
     // for each seller, sell max possible of good
     for (const [sellerName, quantity] of Object.entries(this.farmSellers)) {
-      const sellerInfo = getSeller(sellerName, this.sellers)
+      const sellerInfo = getSeller(sellerName as SellerType, this.sellers)
 
       // Does seller exist?
       if (!sellerInfo) {
@@ -120,8 +123,10 @@ export default class Farm {
       }
 
       const productToSell = sellerInfo?.products.name
-      const totalSell = sellerInfo.products.rate * quantity
-      const availibleProducts = Math.floor(this.farmProducts[productToSell])
+      const totalSell = sellerInfo.products.rate * (quantity || 0)
+      const availibleProducts = Math.floor(
+        this.farmProducts[productToSell] || 0
+      )
 
       // If total sell exceeds availible, only sell availible
       const maxSell = Math.min(totalSell, availibleProducts)
