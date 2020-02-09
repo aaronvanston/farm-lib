@@ -7,5 +7,5 @@ export default {
     file: 'lib/index.js',
     format: 'cjs',
   },
-  plugins: [run(), typescript()],
+  plugins: [typescript(), run()],
 }

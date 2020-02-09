@@ -59,7 +59,7 @@ export default class Farm {
       return message(`Cannot find ${producer}`, false)
     }
 
-    if (this.farmBank >= producerInfo.cost) {
+    if (this.farmBank <= producerInfo.cost) {
       return message('Not enough money', false)
     }
 
@@ -79,7 +79,7 @@ export default class Farm {
 
     // Does the product exist?
     // Is there enough product to sell?
-    if (this.farmProducts[product] || 0 >= quantity) {
+    if (this.farmProducts[product] || 0 <= quantity) {
       return message(`You dont have enough ${product}s to sell`, false)
     }
 
