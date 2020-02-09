@@ -8,4 +8,13 @@ export default [
       rate: 1,
     },
   },
+  {
+    name: 'farmer',
+    buyPrice: 1000,
+    multiplier: 1.05,
+    products: {
+      name: 'milk',
+      rate: 1,
+    },
+  },
 ]

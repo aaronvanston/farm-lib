@@ -13,12 +13,15 @@ export default class Farm {
 
     this.handleTick = handleTick
 
-    this.farmProducers = {}
+    this.farmProducers = {
+      cow: 1,
+      chicken: 100,
+    }
     this.farmSellers = {
       'for-sale-sign': 1,
     }
     this.farmProducts = {}
-    this.farmBank = 1000
+    this.farmBank = 100000
 
     this.initialise()
   }

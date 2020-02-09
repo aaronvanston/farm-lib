@@ -1,4 +1,5 @@
 import run from '@rollup/plugin-run'
+import typescript from '@rollup/plugin-typescript'
 
 export default {
   input: 'src/index.js',
@@ -6,5 +7,5 @@ export default {
     file: 'lib/index.js',
     format: 'cjs',
   },
-  plugins: [run()],
+  plugins: [run(), typescript()],
 }
