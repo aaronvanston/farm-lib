@@ -1,4 +1,4 @@
-const message = (message, isSuccessful) => {
+const message = (message: string, isSuccessful: boolean) => {
   return {
     message,
     isSuccessful,

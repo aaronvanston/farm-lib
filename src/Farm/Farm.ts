@@ -1,5 +1,5 @@
 import { getProduct, getProducer, getSeller } from '../utils/getters'
-import updateQuantity from '../utils/updateQuantity'
+import calculateStore from '../utils/calculateStore'
 import message from '../utils/message'
 import config from '../config'
 
@@ -64,7 +64,7 @@ export default class Farm {
     }
 
     this.farmBank -= producerInfo.cost
-    this.farmProducers = updateQuantity(this.farmProducers, producer, 1)
+    this.farmProducers = calculateStore(this.farmProducers, producer, 1)
 
     return message(`Bought ${producer}`, true)
   }
@@ -84,7 +84,7 @@ export default class Farm {
     }
 
     this.farmBank += productInfo.value * quantity
-    this.farmProducts = updateQuantity(this.farmProducts, product, -quantity)
+    this.farmProducts = calculateStore(this.farmProducts, product, -quantity)
     return message(`Sold ${product} (x${quantity})`, true)
   }
 
@@ -104,7 +104,7 @@ export default class Farm {
       const productToProduce = producerInfo.produces
       const totalQty = productToProduce.rate * (quantity || 0)
 
-      this.farmProducts = updateQuantity(
+      this.farmProducts = calculateStore(
         this.farmProducts,
         productToProduce.name,
         totalQty
