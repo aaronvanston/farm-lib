@@ -100,12 +100,12 @@ export default class Farm {
   }
 
   sell(product: ProductType, quantity = 1) {
-    const productInfo = getProduct(product, this.products)
-
     // Does product exist?
-    if (!productInfo) {
+    if (!(product in ProductType)) {
       return message(`Cannot find ${product}`, false)
     }
+
+    const productInfo = getProduct(product, this.products)
 
     // Does the product exist?
     // Is there enough product to sell?
@@ -115,6 +115,7 @@ export default class Farm {
 
     this.farmBank += productInfo.value * quantity
     this.farmProducts = calculateStore(this.farmProducts, product, -quantity)
+
     return message(`Sold ${product} (x${quantity})`, true)
   }
 
@@ -145,12 +146,12 @@ export default class Farm {
   consume() {
     // for each seller, sell max possible of good
     for (const [sellerName, quantity] of Object.entries(this.farmSellers)) {
-      const sellerInfo = getSeller(sellerName as SellerType, this.sellers)
       // Does seller exist?
-      if (!sellerInfo) {
+      if (!(sellerName in SellerType)) {
         return message(`Cannot find ${sellerName}`, false)
       }
 
+      const sellerInfo = getSeller(sellerName as SellerType, this.sellers)
       const productToSell = sellerInfo?.products.name
       const totalSell = sellerInfo.products.rate * (quantity || 0)
       const availibleProducts = Math.floor(

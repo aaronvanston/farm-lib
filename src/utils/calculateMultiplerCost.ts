@@ -1,9 +1,9 @@
 const calculateMultiplerCost = (
   cost: number,
-  quantity: number,
+  currentQuantity: number,
   multipler: number
 ) => {
-  return quantity === 0 ? cost : cost * quantity ** multipler
+  return currentQuantity === 0 ? cost : cost * multipler ** currentQuantity
 }
 
 export default calculateMultiplerCost
