@@ -175,4 +175,41 @@ export default class Farm {
       farmBank: this.farmBank,
     }
   }
+
+  save() {
+    const date = Date.now()
+    const progress = {
+      farmProducers: this.farmProducers,
+      farmProducts: this.farmProducts,
+      farmSellers: this.farmSellers,
+      farmBank: this.farmBank,
+      date,
+    }
+
+    const stringify = JSON.stringify(progress)
+    const encoded = Buffer.from(stringify, 'binary').toString('base64')
+
+    return encoded
+  }
+
+  load(progress: string) {
+    const decoded = Buffer.from(progress, 'base64').toString('binary')
+    const progressData = JSON.parse(decoded)
+    const {
+      farmProducers,
+      farmProducts,
+      farmSellers,
+      farmBank,
+      date,
+    } = progressData
+
+    const loadData = new Date(date)
+
+    this.farmProducers = farmProducers
+    this.farmProducts = farmProducts
+    this.farmSellers = farmSellers
+    this.farmBank = farmBank
+
+    return message(`Loading save from ${loadData}`, true)
+  }
 }
