@@ -6,6 +6,7 @@ export default {
   output: {
     file: 'lib/index.js',
     format: 'cjs',
+    exports: 'named',
   },
   plugins: [typescript(), run()],
 }

@@ -4,6 +4,10 @@ import message from '../utils/message'
 import calculateMultiplerCost from '../utils/calculateMultiplerCost'
 import config from '../config'
 
+import defaultProducers from '../catalogue/producers'
+import defaultProducts from '../catalogue/products'
+import defaultSellers from '../catalogue/sellers'
+
 import { Producer, ProducerType } from '../interfaces/producers'
 import { Product, ProductType } from '../interfaces/products'
 import { Seller, SellerType } from '../interfaces/sellers'
@@ -26,10 +30,12 @@ export default class Farm {
   private farmProducts: FarmProducts
   private farmBank: FarmBank
 
-  constructor(
-    { producers, products, sellers }: FarmInfo,
-    handleTick: FarmDay = () => {}
-  ) {
+  constructor({
+    producers = defaultProducers,
+    products = defaultProducts,
+    sellers = defaultSellers,
+    handleTick = () => {},
+  }: FarmInfo) {
     this.products = products
     this.producers = producers
     this.sellers = sellers
@@ -53,7 +59,7 @@ export default class Farm {
     this.handleTick(this.total())
   }
 
-  buy(item: ProducerType | SellerType) {
+  buy(item: string) {
     if (item in ProducerType) {
       const producerInfo = getProducer(item as ProducerType, this.producers)
       const currentQuantity = this.farmProducers[item] || 0
@@ -99,13 +105,13 @@ export default class Farm {
     }
   }
 
-  sell(product: ProductType, quantity = 1) {
+  sell(product: string, quantity = 1) {
     // Does product exist?
     if (!(product in ProductType)) {
       return message(`Cannot find ${product}`, false)
     }
 
-    const productInfo = getProduct(product, this.products)
+    const productInfo = getProduct(product as ProductType, this.products)
 
     // Does the product exist?
     // Is there enough product to sell?
@@ -114,7 +120,11 @@ export default class Farm {
     }
 
     this.farmBank += productInfo.value * quantity
-    this.farmProducts = calculateStore(this.farmProducts, product, -quantity)
+    this.farmProducts = calculateStore(
+      this.farmProducts,
+      product as ProductType,
+      -quantity
+    )
 
     return message(`Sold ${product} (x${quantity})`, true)
   }
