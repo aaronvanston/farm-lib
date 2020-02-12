@@ -110,7 +110,7 @@ export default class Farm {
 
     // Does the product exist?
     // Is there enough product to sell?
-    if (this.farmProducts[product] || 0 <= quantity) {
+    if ((this.farmProducts[product] || 0) <= quantity) {
       return message(`You dont have enough ${product}s to sell`, false)
     }
 
@@ -147,7 +147,6 @@ export default class Farm {
     // for each seller, sell max possible of good
     for (const [sellerName, quantity] of Object.entries(this.farmSellers)) {
       const sellerInfo = getSeller(sellerName as SellerType, this.sellers)
-
       // Does seller exist?
       if (!sellerInfo) {
         return message(`Cannot find ${sellerName}`, false)
@@ -162,7 +161,9 @@ export default class Farm {
       // If total sell exceeds availible, only sell availible
       const maxSell = Math.min(totalSell, availibleProducts)
 
-      this.sell(productToSell, maxSell)
+      if (maxSell > 0) {
+        this.sell(productToSell, maxSell)
+      }
     }
   }
 
