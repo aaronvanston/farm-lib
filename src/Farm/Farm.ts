@@ -121,15 +121,15 @@ export default class Farm {
   produce() {
     // for each producer, generate their products into farm products
     for (const [producerName, quantity] of Object.entries(this.farmProducers)) {
+      // Does producer exist?
+      if (!(producerName in ProducerType)) {
+        return message(`Cannot find ${producerName}`, false)
+      }
+
       const producerInfo = getProducer(
         producerName as ProducerType,
         this.producers
       )
-
-      // Does producer exist?
-      if (!producerInfo) {
-        return message(`Cannot find ${producerName}`, false)
-      }
 
       const productToProduce = producerInfo.produces
       const totalQty = productToProduce.rate * (quantity || 0)
