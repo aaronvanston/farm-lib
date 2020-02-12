@@ -52,21 +52,52 @@ export default class Farm {
     this.handleTick(this.total())
   }
 
-  buy(producer: ProducerType) {
-    const producerInfo = getProducer(producer, this.producers)
+  buy(item: ProducerType | SellerType) {
+    if (item in ProducerType) {
+      const producerInfo = getProducer(item as ProducerType, this.producers)
 
-    if (!producerInfo) {
-      return message(`Cannot find ${producer}`, false)
+      if (!producerInfo) {
+        return message(`Cannot find ${item}`, false)
+      }
+
+      if (this.farmBank <= producerInfo.cost) {
+        return message('Not enough money', false)
+      }
+
+      this.farmBank -= producerInfo.cost
+      this.farmProducers = calculateStore(
+        this.farmProducers,
+        item as ProducerType,
+        1
+      )
+
+      return message(`Bought ${item}`, true)
+    } else if (item in SellerType) {
+      const sellerInfo = getSeller(item as SellerType, this.sellers)
+      const currentQuantity = this.farmSellers[item] || 0
+
+      const multiplerCost =
+        currentQuantity === 0
+          ? sellerInfo.cost
+          : Math.floor(
+              sellerInfo.cost * currentQuantity ** sellerInfo.multiplier
+            )
+
+      if (!sellerInfo) {
+        return message(`Cannot find ${item}`, false)
+      }
+
+      if (this.farmBank <= multiplerCost) {
+        return message('Not enough money', false)
+      }
+
+      this.farmBank -= multiplerCost
+      this.farmSellers = calculateStore(this.farmSellers, item as SellerType, 1)
+
+      return message(`Bought ${item} for ${multiplerCost}`, true)
+    } else {
+      return message(`Cannot find: ${item} in availible lists`, false)
     }
-
-    if (this.farmBank <= producerInfo.cost) {
-      return message('Not enough money', false)
-    }
-
-    this.farmBank -= producerInfo.cost
-    this.farmProducers = calculateStore(this.farmProducers, producer, 1)
-
-    return message(`Bought ${producer}`, true)
   }
 
   sell(product: ProductType, quantity = 1) {

@@ -1,24 +1,25 @@
-import { Seller } from '../interfaces/sellers'
+import { SellerType } from '../interfaces/sellers'
+import { ProductType } from '../interfaces/products'
 
 const sellers = [
   {
-    name: 'for-sale-sign',
-    buyPrice: 1000,
+    name: SellerType.for_sale_sign,
+    cost: 1000,
     multiplier: 1.05,
     products: {
-      name: 'egg',
+      name: ProductType.egg,
       rate: 1,
     },
   },
   {
-    name: 'farmer',
-    buyPrice: 1000,
+    name: SellerType.farmer,
+    cost: 1000,
     multiplier: 1.05,
     products: {
-      name: 'milk',
+      name: ProductType.milk,
       rate: 1,
     },
   },
 ]
 
-export default sellers as Seller[]
+export default sellers

@@ -6,4 +6,9 @@ export interface Producer {
   produces: Produce
 }
 
-export type ProducerType = 'chicken' | 'cow'
+// export type ProducerType = 'chicken' | 'cow'
+
+export enum ProducerType {
+  chicken = 'chicken',
+  cow = 'cow',
+}

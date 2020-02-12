@@ -2,7 +2,7 @@ import { Producer, ProducerType } from '../interfaces/producers'
 import { Product, ProductType } from '../interfaces/products'
 import { Seller, SellerType } from '../interfaces/sellers'
 
-// These can be collapsed into a singel function
+// These can be collapsed into a single function
 export const getProducer = (
   producerName: ProducerType,
   producers: Producer[]

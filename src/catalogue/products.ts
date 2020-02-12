@@ -1,14 +1,14 @@
-import { Product } from '../interfaces/products'
+import { ProductType } from '../interfaces/products'
 
 const products = [
   {
-    name: 'egg',
+    name: ProductType.egg,
     value: 100,
   },
   {
-    name: 'milk',
+    name: ProductType.milk,
     value: 1000,
   },
 ]
 
-export default products as Product[]
+export default products

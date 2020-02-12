@@ -1,16 +1,17 @@
-import { Producer } from '../interfaces/producers'
+import { ProducerType } from '../interfaces/producers'
+import { ProductType } from '../interfaces/products'
 
 const producers = [
   {
-    name: 'chicken',
+    name: ProducerType.chicken,
     cost: 1000,
-    produces: { name: 'egg', rate: 0.1 },
+    produces: { name: ProductType.egg, rate: 0.1 },
   },
   {
-    name: 'cow',
+    name: ProducerType.cow,
     cost: 10000,
-    produces: { name: 'milk', rate: 1 },
+    produces: { name: ProductType.milk, rate: 1 },
   },
 ]
 
-export default producers as Producer[]
+export default producers
