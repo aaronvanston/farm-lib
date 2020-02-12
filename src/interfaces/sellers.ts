@@ -11,5 +11,9 @@ export interface Seller {
 
 export enum SellerType {
   for_sale_sign = 'for_sale_sign',
+  newspaper_ad = 'newspaper_ad',
+  craigslist_ad = 'craigslist_ad',
+  chicken_dealer = 'chicken_dealer',
+  shopkeeper = 'shopkeeper',
   farmer = 'farmer',
 }
