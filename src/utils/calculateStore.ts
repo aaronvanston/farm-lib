@@ -5,9 +5,10 @@ const calculateStore = <T extends FarmStores, K extends keyof T>(
   item: K,
   quantity: number
 ): T => {
+  const newQuantity = ((store[item] || 0) as number) + quantity
   return {
     ...store,
-    [item]: ((store[item] || 0) as number) + quantity,
+    [item]: parseFloat(newQuantity.toFixed(2)),
   }
 }
 
