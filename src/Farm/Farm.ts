@@ -1,6 +1,7 @@
 import { getProduct, getProducer, getSeller } from '../utils/getters'
 import calculateStore from '../utils/calculateStore'
 import message from '../utils/message'
+import { formatPrice } from '../utils/format'
 import calculateMultiplerCost from '../utils/calculateMultiplerCost'
 import config from '../config'
 
@@ -59,15 +60,18 @@ export default class Farm {
     this.handleTick(this.total())
   }
 
-  buy(item: string) {
+  buy(item: string, buyQuantity = 1) {
     if (item in ProducerType) {
       const producerInfo = getProducer(item as ProducerType, this.producers)
       const currentQuantity = this.farmProducers[item] || 0
 
+      console.log('✋', buyQuantity)
+
       const multiplerCost = calculateMultiplerCost(
         producerInfo.cost,
         currentQuantity,
-        producerInfo.multiplier
+        producerInfo.multiplier,
+        buyQuantity
       )
 
       if (this.farmBank <= multiplerCost) {
@@ -78,10 +82,13 @@ export default class Farm {
       this.farmProducers = calculateStore(
         this.farmProducers,
         item as ProducerType,
-        1
+        buyQuantity
       )
 
-      return message(`Bought ${item}`, true)
+      return message(
+        `Bought ${item} (x${buyQuantity}) for ${formatPrice(multiplerCost)}`,
+        true
+      )
     } else if (item in SellerType) {
       const sellerInfo = getSeller(item as SellerType, this.sellers)
       const currentQuantity = this.farmSellers[item] || 0
@@ -89,7 +96,8 @@ export default class Farm {
       const multiplerCost = calculateMultiplerCost(
         sellerInfo.cost,
         currentQuantity,
-        sellerInfo.multiplier
+        sellerInfo.multiplier,
+        buyQuantity
       )
 
       if (this.farmBank <= multiplerCost) {
@@ -97,9 +105,16 @@ export default class Farm {
       }
 
       this.farmBank -= multiplerCost
-      this.farmSellers = calculateStore(this.farmSellers, item as SellerType, 1)
+      this.farmSellers = calculateStore(
+        this.farmSellers,
+        item as SellerType,
+        buyQuantity
+      )
 
-      return message(`Bought ${item} for ${multiplerCost}`, true)
+      return message(
+        `Bought ${item} (x${buyQuantity}) for ${formatPrice(multiplerCost)}`,
+        true
+      )
     } else {
       return message(`Cannot find: ${item} in availible lists`, false)
     }
