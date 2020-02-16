@@ -191,7 +191,8 @@ farm.load('eyJmYXJtUHJvZHVjZXJzIjp7ImNoaWNrZW5fY29vcCI6MX0sImZhcm1Qcm9kdWN0cyI6e
 - `message` | `{string}` - A message object with the keys:
   - `message` | `{string}` - Returns a message based on success/ failure with context.
   - `isSuccessful` | `{bool}` - Was the operation successful
-    **Description**
+
+**Description**
 
 The `.load` action accepts a base64 encoded string with the contents of the farm. Upon successful load, it will return the date and timestamp of the loaded save token.
 
