@@ -1,10 +1,16 @@
 {
-  "name": "farm-lib",
+  "name": "@aaronvanston/farm-lib",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/aaronvanston/farm-lib.git",
+  "main": "/lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronvanston/farm-lib.git"
+  },
   "author": "Aaron Vanston",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w"
@@ -15,5 +21,18 @@
     "rollup": "^1.31.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.5"
-  }
+  },
+  "description": "The farm library behind farm-cli",
+  "bugs": {
+    "url": "https://github.com/aaronvanston/farm-lib/issues"
+  },
+  "homepage": "https://github.com/aaronvanston/farm-lib#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+    "farm",
+    "clicker",
+    "library"
+  ]
 }

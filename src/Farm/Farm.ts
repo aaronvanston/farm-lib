@@ -65,8 +65,6 @@ export default class Farm {
       const producerInfo = getProducer(item as ProducerType, this.producers)
       const currentQuantity = this.farmProducers[item] || 0
 
-      console.log('✋', buyQuantity)
-
       const multiplerCost = calculateMultiplerCost(
         producerInfo.cost,
         currentQuantity,
