@@ -33,7 +33,7 @@ const farm = new FarmLib()
 
 The farm class takes in a single object with keys as arguments, all are **optional** with default values being used if nothing is passed.
 
-See [customising the farm](customProducers) to understand more about custom producers, products and sellers.
+See [customising the farm](#-customising-the-farm) to understand more about custom producers, products and sellers.
 
 ```JavaScript
 const farm = new FarmLib({
@@ -271,9 +271,9 @@ You can customise the products, producers and sellers within the farm library. I
 
 The farm class can take in a custom set of Producers, Products and Sellers. These custom sets must conform to the shape/interface detailed:
 
-- Producers: Things that produce products
-- Products: The products being produces
-- Sellers: The things that sell the products
+- [Producers](#producers): Things that produce products
+- [Products](#products): The products being produces
+- [Sellers](#sellers): The things that sell the products
 
 You can be quite creative in the theme you choose. It does not just have to be about farms, it can literally be anything!
 
