@@ -33,7 +33,7 @@ const farm = new FarmLib()
 
 The farm class takes in a single object with keys as arguments, all are **optional** with default values being used if nothing is passed.
 
-See customising the farm to understand more about custom producers, products and sellers.
+See [customising the farm](customProducers) to understand more about custom producers, products and sellers.
 
 ```JavaScript
 const farm = new FarmLib({
@@ -51,7 +51,7 @@ const farm = new FarmLib({
 | `sellers`    | `array`, optional    | [Default sellers](https://github.com/aaronvanston/farm-lib/blob/master/src/catalogue/sellers.ts)     | An array of available sellers to purchase in game. You can pass in your own custom set as long as it conforms to the sellers interface.                                     |
 | `handleTick` | `function`, optional | no-op function                                                                                       | Callback function that receives the status of the farm each tick (1 second). See [`.total`](https://github.com/aaronvanston/farm-lib#total) method to see what is returned. |
 
-## API
+## 🖥 API
 
 The farm class includes the following methods:
 
@@ -240,7 +240,7 @@ You can customise the products, producers and sellers within the farm library. I
   - `name` | `{string}` - The product name it sells, this must match exactly to an associated product's name.
   - `rate` | `{number}` - The amount it sells per tick. This number has to be a whole number (no decimals).
 
-## Customising the farm
+## 🎨 Customising the farm
 
 The farm class can take in a custom set of Producers, Products and Sellers. These custom sets must conform to the shape/interface detailed:
 
@@ -275,7 +275,7 @@ const customSellers = [{
   cost: 10000,
   multipler: 1.02,
   products: {
-    name: 'gold_ore`
+    name: 'gold_ore`,
     rate: 1
   }
 }]
