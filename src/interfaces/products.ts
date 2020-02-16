@@ -8,8 +8,6 @@ export interface Produce {
   rate: number
 }
 
-// export type ProductType = 'egg' | 'milk'
-
 export enum ProductType {
   egg = 'egg',
   milk = 'milk',
