@@ -288,7 +288,7 @@ const customProducers = [{
   cost: 10000,
   multipler: 1.10,
   produces: {
-    name: 'gold_ore`,
+    name: 'gold_ore',
     rate: 0.1,
   },
 }]
@@ -303,7 +303,7 @@ const customSellers = [{
   cost: 10000,
   multipler: 1.02,
   products: {
-    name: 'gold_ore`,
+    name: 'gold_ore',
     rate: 1,
   }
 }]
