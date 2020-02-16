@@ -57,6 +57,8 @@ The farm class includes the following methods:
 
 ### `.buy`
 
+---
+
 ```JavaScript
 farm.buy(item, quantity)
 ```
@@ -66,18 +68,25 @@ farm.buy(item, quantity)
 - `item` | `{string}` - Name of Producer or Seller you wish to purchase.
 - `quantity` | `{number?}` - Quantity you wish to purchase. Optional field, defaults to 1.
 
-**Return:**
+**Example:**
+
+```JavaScript
+farm.buy('chicken', 10)
+```
 
 **Return:**
 
 - `message` | `{object}` - A message object with the keys:
   - `message` | `{string}` - Returns a message based on success/ failure with context.
   - `isSuccessful` | `{bool}` - Was the operation successful
-    **Description**
+
+**Description:**
 
 The `.buy` action allows you to purchase either a producer or seller of products. You must have the required amount of goods (money) to purchase them. If you supply a quantity, you must have the entire amount needed, no partial purchases.
 
 ### `.sell`
+
+---
 
 ```JavaScript
 farm.sell(product, quantity)
@@ -88,17 +97,25 @@ farm.sell(product, quantity)
 - `product` | `{string}` - Name of Product you wish to sell.
 - `quantity` | `{number?}` - Quantity you wish to sell. Optional field, defaults to 1.
 
+**Example:**
+
+```JavaScript
+farm.sell('egg', 5)
+```
+
 **Return:**
 
 - `message` | `{object}` - A message object with the keys:
   - `message` | `{string}` - Returns a message based on success/ failure with context.
   - `isSuccessful` | `{bool}` - Was the operation successful
 
-**Description**
+**Description:**
 
 The `.sell` action allows you to sell a product to earn money. You can supply a quantity if you wish to sell in bulk.
 
 ### `.total`
+
+---
 
 ```JavaScript
 farm.total()
@@ -139,6 +156,8 @@ The output of `.total` is the same data returned in the `handleTick` callback fu
 
 ### `.save`
 
+---
+
 ```JavaScript
 farm.save()
 ```
@@ -153,6 +172,8 @@ The `.save` method returns a serialised string that represents your farm, its qu
 
 ### `.load`
 
+---
+
 ```JavaScript
 farm.buy(saveToken)
 ```
@@ -160,6 +181,12 @@ farm.buy(saveToken)
 **Params:**
 
 - `saveToken` | `{string}` - Base64 encoded save token.
+
+**Example:**
+
+```JavaScript
+farm.load('eyJmYXJtUHJvZHVjZXJzIjp7ImNoaWNrZW5fY29vcCI6MX0sImZhcm1Qcm9kdWN0cyI6e30sImZhcm1TZWxsZXJzIjp7ImZvcl9zYWxlX3NpZ24iOjF9LCJmYXJtQmFuayI6ODkwMDAsImRhdGUiOjE1ODE1MDY0MDE1NDF9')
+```
 
 **Return:**
 
