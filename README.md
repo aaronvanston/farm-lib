@@ -289,13 +289,13 @@ const customProducers = [{
   multipler: 1.10,
   produces: {
     name: 'gold_ore`,
-    rate: 0.1
-  }
+    rate: 0.1,
+  },
 }]
 
 const customProducts = [{
   name: 'gold_ore',
-  value: 100
+  value: 100,
 }]
 
 const customSellers = [{
@@ -304,7 +304,7 @@ const customSellers = [{
   multipler: 1.02,
   products: {
     name: 'gold_ore`,
-    rate: 1
+    rate: 1,
   }
 }]
 
