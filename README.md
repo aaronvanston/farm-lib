@@ -57,8 +57,6 @@ The farm class includes the following methods:
 
 ### `.buy`
 
----
-
 ```JavaScript
 farm.buy(item, quantity)
 ```
@@ -84,9 +82,9 @@ farm.buy('chicken', 10)
 
 The `.buy` action allows you to purchase either a producer or seller of products. You must have the required amount of goods (money) to purchase them. If you supply a quantity, you must have the entire amount needed, no partial purchases.
 
-### `.sell`
-
 ---
+
+### `.sell`
 
 ```JavaScript
 farm.sell(product, quantity)
@@ -113,9 +111,9 @@ farm.sell('egg', 5)
 
 The `.sell` action allows you to sell a product to earn money. You can supply a quantity if you wish to sell in bulk.
 
-### `.total`
-
 ---
+
+### `.total`
 
 ```JavaScript
 farm.total()
@@ -154,9 +152,9 @@ The total method returns the farms status. This includes the farm bank and all t
 
 The output of `.total` is the same data returned in the `handleTick` callback function.
 
-### `.save`
-
 ---
+
+### `.save`
 
 ```JavaScript
 farm.save()
@@ -170,9 +168,9 @@ farm.save()
 
 The `.save` method returns a serialised string that represents your farm, its quantities and value. Used to load your farm contents in the future.
 
-### `.load`
-
 ---
+
+### `.load`
 
 ```JavaScript
 farm.buy(saveToken)
@@ -196,6 +194,8 @@ farm.load('eyJmYXJtUHJvZHVjZXJzIjp7ImNoaWNrZW5fY29vcCI6MX0sImZhcm1Qcm9kdWN0cyI6e
     **Description**
 
 The `.load` action accepts a base64 encoded string with the contents of the farm. Upon successful load, it will return the date and timestamp of the loaded save token.
+
+---
 
 ## Interfaces
 
