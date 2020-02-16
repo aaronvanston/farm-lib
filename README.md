@@ -7,7 +7,7 @@ Simple JavaScript interface to help build a farm idle "clicker" game. The librar
 - Built in TypeScript, exported to `es5`
 - Accepts custom Products, Producers and Sellers
 - Ability to save and load progress
-- Runs on 1s tickrate (produces and sells goods automatically every 1 second)
+- Runs on 1s tick rate (produces and sells goods automatically every 1 second)
 
 ## 📦 Install
 
@@ -33,6 +33,8 @@ const farm = new FarmLib()
 
 The farm class takes in a single object with keys as arguments, all are **optional** with default values being used if nothing is passed.
 
+See customising the farm to understand more about custom producers, products and sellers.
+
 ```JavaScript
 const farm = new FarmLib({
   producers,
@@ -42,12 +44,12 @@ const farm = new FarmLib({
 })
 ```
 
-| Argument     | Type                 | Default Value                            | Description                                                                                                                                 |
-| ------------ | -------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `producers`  | `array`, optional    | Default producers, see list for full set | An array of available producers to purchase in game. You can pass in your own custom set as long as it conforms to the producers interface. |
-| `products`   | `array`, optional    | Default producers, see list for full set | An array of available producers to purchase in game. You can pass in your own custom set as long as it conforms to the producers interface. |
-| `sellers`    | `array`, optional    | Default producers, see list for full set | An array of available producers to purchase in game. You can pass in your own custom set as long as it conforms to the producers interface. |
-| `handleTick` | `function`, optional | no-op function                           | Callback function that receives the status of the farm each tick (1 second). See FarmDay interface to see what is returned.                 |
+| Argument     | Type                 | Default Value                                                                                        | Description                                                                                                                                                                 |
+| ------------ | -------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `producers`  | `array`, optional    | [Default producers](https://github.com/aaronvanston/farm-lib/blob/master/src/catalogue/producers.ts) | An array of available producers to purchase in game. You can pass in your own custom set as long as it conforms to the producers interface.                                 |
+| `products`   | `array`, optional    | [Default products](https://github.com/aaronvanston/farm-lib/blob/master/src/catalogue/products.ts)   | An array of available products to purchase in game. You can pass in your own custom set as long as it conforms to the products interface.                                   |
+| `sellers`    | `array`, optional    | [Default sellers](https://github.com/aaronvanston/farm-lib/blob/master/src/catalogue/sellers.ts)     | An array of available sellers to purchase in game. You can pass in your own custom set as long as it conforms to the sellers interface.                                     |
+| `handleTick` | `function`, optional | no-op function                                                                                       | Callback function that receives the status of the farm each tick (1 second). See [`.total`](https://github.com/aaronvanston/farm-lib#total) method to see what is returned. |
 
 ## API
 
@@ -221,7 +223,7 @@ You can customise the products, producers and sellers within the farm library. I
     name: 'stall',
     cost: 1000,
     multipler: 1.05,
-    produces: {
+    products: {
       name: 'cookie`
       rate: 1
     }
@@ -234,6 +236,74 @@ You can customise the products, producers and sellers within the farm library. I
 - `name` | `{string}` - The name of the seller.
 - `cost` | `{number}` - The cost of the seller without decimal places. $1 is stored as `100`, in this example the store would cost $10.
 - `multiplier` | `{number}` - The compound cost multiplier of the seller, as you buy more of the seller the cost exponentially increases. Set to `1` for no increase.
-- `produces` | `{object}` - Object of Produce:
-  - `name` | `{string}` - The product name it produces, this must match exactly to an associated product's name.
+- `products` | `{object}` - Object of produce:
+  - `name` | `{string}` - The product name it sells, this must match exactly to an associated product's name.
   - `rate` | `{number}` - The amount it sells per tick. This number has to be a whole number (no decimals).
+
+## Customising the farm
+
+The farm class can take in a custom set of Producers, Products and Sellers. These custom sets must conform to the shape/interface detailed:
+
+- Producers: Things that produce products
+- Products: The products being produces
+- Sellers: The things that sell the products
+
+You can be quite creative in the theme you choose. It does not just have to be about farms, it can literally be anything!
+
+An example of a customised "farm":
+
+```JavaScript
+import FarmLib from '@aaronvanston/farm-lib'
+
+const customProducers = [{
+  name: 'gold mind',
+  cost: 10000,
+  multipler: 1.10,
+  produces: {
+    name: 'gold_ore`
+    rate: 0.1
+  }
+}]
+
+const customProducts = [{
+  name: 'gold_ore',
+  value: 100
+}]
+
+const customSellers = [{
+  name: 'smelter',
+  cost: 10000,
+  multipler: 1.02,
+  products: {
+    name: 'gold_ore`
+    rate: 1
+  }
+}]
+
+const logger = (farmInfo) => console.log(farmInfo)
+
+const farm = new FarmLib({
+  producers: customProducers,
+  products: customProducts,
+  sellers: customSellers,
+  handleTick: logger
+})
+```
+
+### Extending default lists
+
+In addition to creating your own you can extend the current default set to include you own. To access the default lists, you can import them from the `farm-lib` as named imports.
+
+```JavaScript
+import FarmLib, { producers, products, sellers } from '@aaronvanston/farm-lib'
+
+// extend, change, remove etc
+const customProducers = {
+  ...producers,
+  // NEW PRODUCER
+}
+
+const farm = new FarmLib({
+  producers: customProducers,
+})
+```
