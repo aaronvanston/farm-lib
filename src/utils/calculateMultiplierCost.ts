@@ -1,13 +1,13 @@
 const addMultiplier = (
   cost: number,
   currentQuantity: number,
-  multipler: number
-) => Math.floor(cost * multipler ** currentQuantity)
+  multiplier: number
+) => Math.floor(cost * multiplier ** currentQuantity)
 
-const calculateMultiplerCost = (
+const calculateMultiplierCost = (
   cost: number,
   currentQuantity: number,
-  multipler: number,
+  multiplier: number,
   purchaseQuantity: number
 ) => {
   const quantities = [...Array(purchaseQuantity).keys()].map(item => {
@@ -15,9 +15,9 @@ const calculateMultiplerCost = (
 
     return tempQuantity === 0
       ? cost
-      : addMultiplier(cost, tempQuantity, multipler)
+      : addMultiplier(cost, tempQuantity, multiplier)
   })
   return quantities.reduce((total, amount) => total + amount)
 }
 
-export default calculateMultiplerCost
+export default calculateMultiplierCost

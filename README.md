@@ -209,7 +209,7 @@ You can customise the products, producers and sellers within the farm library. I
   {
     name: 'bakery',
     cost: 1000,
-    multipler: 1.05,
+    multiplier: 1.05,
     produces: {
       name: 'cookie`
       rate: 0.1
@@ -250,7 +250,7 @@ You can customise the products, producers and sellers within the farm library. I
   {
     name: 'stall',
     cost: 1000,
-    multipler: 1.05,
+    multiplier: 1.05,
     products: {
       name: 'cookie`
       rate: 1
@@ -286,7 +286,7 @@ import FarmLib from '@aaronvanston/farm-lib'
 const customProducers = [{
   name: 'gold mind',
   cost: 10000,
-  multipler: 1.10,
+  multiplier: 1.10,
   produces: {
     name: 'gold_ore',
     rate: 0.1,
@@ -301,7 +301,7 @@ const customProducts = [{
 const customSellers = [{
   name: 'smelter',
   cost: 10000,
-  multipler: 1.02,
+  multiplier: 1.02,
   products: {
     name: 'gold_ore',
     rate: 1,

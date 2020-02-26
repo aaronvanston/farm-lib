@@ -2,7 +2,7 @@ import { getProduct, getProducer, getSeller } from '../utils/getters'
 import calculateStore from '../utils/calculateStore'
 import message from '../utils/message'
 import { formatPrice } from '../utils/format'
-import calculateMultiplerCost from '../utils/calculateMultiplerCost'
+import calculateMultiplierCost from '../utils/calculateMultiplierCost'
 import config from '../config'
 
 import defaultProducers from '../catalogue/producers'
@@ -65,18 +65,18 @@ export default class Farm {
       const producerInfo = getProducer(item as ProducerType, this.producers)
       const currentQuantity = this.farmProducers[item] || 0
 
-      const multiplerCost = calculateMultiplerCost(
+      const multiplierCost = calculateMultiplierCost(
         producerInfo.cost,
         currentQuantity,
         producerInfo.multiplier,
         buyQuantity
       )
 
-      if (this.farmBank <= multiplerCost) {
+      if (this.farmBank <= multiplierCost) {
         return message('Not enough money', false)
       }
 
-      this.farmBank -= multiplerCost
+      this.farmBank -= multiplierCost
       this.farmProducers = calculateStore(
         this.farmProducers,
         item as ProducerType,
@@ -84,25 +84,25 @@ export default class Farm {
       )
 
       return message(
-        `Bought ${item} (x${buyQuantity}) for ${formatPrice(multiplerCost)}`,
+        `Bought ${item} (x${buyQuantity}) for ${formatPrice(multiplierCost)}`,
         true
       )
     } else if (item in SellerType) {
       const sellerInfo = getSeller(item as SellerType, this.sellers)
       const currentQuantity = this.farmSellers[item] || 0
 
-      const multiplerCost = calculateMultiplerCost(
+      const multiplierCost = calculateMultiplierCost(
         sellerInfo.cost,
         currentQuantity,
         sellerInfo.multiplier,
         buyQuantity
       )
 
-      if (this.farmBank <= multiplerCost) {
+      if (this.farmBank <= multiplierCost) {
         return message('Not enough money', false)
       }
 
-      this.farmBank -= multiplerCost
+      this.farmBank -= multiplierCost
       this.farmSellers = calculateStore(
         this.farmSellers,
         item as SellerType,
@@ -110,11 +110,11 @@ export default class Farm {
       )
 
       return message(
-        `Bought ${item} (x${buyQuantity}) for ${formatPrice(multiplerCost)}`,
+        `Bought ${item} (x${buyQuantity}) for ${formatPrice(multiplierCost)}`,
         true
       )
     } else {
-      return message(`Cannot find: ${item} in availible lists`, false)
+      return message(`Cannot find: ${item} in available lists`, false)
     }
   }
 
@@ -129,7 +129,7 @@ export default class Farm {
     // Does the product exist?
     // Is there enough product to sell?
     if ((this.farmProducts[product] || 0) <= quantity) {
-      return message(`You dont have enough ${product}s to sell`, false)
+      return message(`You don't have enough ${product}s to sell`, false)
     }
 
     this.farmBank += productInfo.value * quantity
@@ -177,12 +177,12 @@ export default class Farm {
       const sellerInfo = getSeller(sellerName as SellerType, this.sellers)
       const productToSell = sellerInfo?.products.name
       const totalSell = sellerInfo.products.rate * (quantity || 0)
-      const availibleProducts = Math.floor(
+      const availableProducts = Math.floor(
         this.farmProducts[productToSell] || 0
       )
 
-      // If total sell exceeds availible, only sell availible
-      const maxSell = Math.min(totalSell, availibleProducts)
+      // If total sell exceeds available, only sell available
+      const maxSell = Math.min(totalSell, availableProducts)
 
       if (maxSell > 0) {
         this.sell(productToSell, maxSell)
