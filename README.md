@@ -11,6 +11,15 @@ Simple JavaScript interface to help build a farm idle "clicker" game. The librar
 
 ## 📦 Install
 
+For now this package is on the GitHub Packages, as such you will need to set the following in your `.npmrc` first:
+
+```bash
+#.npmrc
+@aaronvanston:registry=https://npm.pkg.github.com
+```
+
+Then install:
+
 ```bash
 $ yarn add @aaronvanston/farm-lib
 
