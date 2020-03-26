@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@rollup/plugin-run@^1.2.0":
+"@rollup/plugin-run@1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-run/-/plugin-run-1.2.0.tgz#475751f151f5d20c58748d6d781690a8ab8e8359"
   integrity sha512-c8V9BLVMSHBJMK60VCJZqqRhnS2F9KECvN7NRhqjmYvKVrs85sLuap4cXm3V/lljRbw9YZaGY06Q/+954EYH1w==
 
-"@rollup/plugin-typescript@^3.0.0":
+"@rollup/plugin-typescript@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-typescript/-/plugin-typescript-3.0.0.tgz#9398fcca1cef67ac325fef19c28dece24c9a5263"
   integrity sha512-O6915Ril3+Q0B4P898PULAcPFZfPuatEB/4nox7bnK48ekGrmamMYhMB5tOqWjihEWrw4oz/NL+c+/kS3Fk95g==
@@ -54,7 +54,7 @@ resolve@^1.14.1:
   dependencies:
     path-parse "^1.0.6"
 
-rollup@^1.31.0:
+rollup@1.31.0:
   version "1.31.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.31.0.tgz#e2a87212e96aa7850f3eb53fdd02cf89f2d2fe9a"
   integrity sha512-9C6ovSyNeEwvuRuUUmsTpJcXac1AwSL1a3x+O5lpmQKZqi5mmrjauLeqIjvREC+yNRR8fPdzByojDng+af3nVw==
@@ -63,12 +63,12 @@ rollup@^1.31.0:
     "@types/node" "*"
     acorn "^7.1.0"
 
-tslib@^1.10.0:
+tslib@1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
 
-typescript@^3.7.5:
+typescript@3.7.5:
   version "3.7.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
   integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
