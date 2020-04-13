@@ -16,7 +16,7 @@
     "dev": "rollup -c -w"
   },
   "devDependencies": {
-    "@rollup/plugin-run": "1.2.2",
+    "@rollup/plugin-run": "2.0.2",
     "rollup": "2.6.1",
     "@rollup/plugin-typescript": "4.1.1",
     "tslib": "1.11.1",
