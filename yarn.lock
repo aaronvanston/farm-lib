@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@rollup/plugin-run@1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-run/-/plugin-run-1.2.1.tgz#273d4fcbb0d4616595704b55e4393a0775177d8b"
-  integrity sha512-Pnf02fj6UxRUADTd+tBXqQdCIfyDLsO8hzaI1yX40WC5uAVIO1lR5CmYTT5UdImdZNtsSS3rFqDFgs39u8XwvQ==
+"@rollup/plugin-run@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-run/-/plugin-run-1.2.2.tgz#cfb2a02def6f34abc1595c5297ad6ba1e693b6c8"
+  integrity sha512-rqXgeqG2E2ti/BRpSuSm0LL+UccSWCmuaLhNeS5HY0M9DIg0nlTfdoIzS4yoxCkzR+rOuElnqyG6Q1jia5d+Gw==
 
 "@rollup/plugin-typescript@4.1.1":
   version "4.1.1"
