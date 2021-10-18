@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@rollup/plugin-run@2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-run/-/plugin-run-2.0.2.tgz#9379f20de4836c05ebb17ddf6e16a85e7a35a327"
-  integrity sha512-ueUAPnd98mZlywKmG1BF3s00EljxStI8C695mkERbVd0ESAt5vFu0lZiwfxe/pxtBty/PbhheqjHTPIP7JJgzQ==
+"@rollup/plugin-run@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-run/-/plugin-run-2.1.0.tgz#688f7c588a9215f30845799f754b2b49a5703ac6"
+  integrity sha512-jMtIKu/MamhHsk9S+BQ8DR3D4WGWflgjPCODB3waYMdimyvd3efqTmX6jqclQAu+Ed7RBUvbpf4PtJ1ly1rdKA==
   dependencies:
-    "@types/node" "13.1.6"
+    "@types/node" "14.0.26"
 
 "@rollup/plugin-typescript@4.1.1":
   version "4.1.1"
@@ -24,10 +24,10 @@
   dependencies:
     estree-walker "^1.0.1"
 
-"@types/node@13.1.6":
-  version "13.1.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.6.tgz#076028d0b0400be8105b89a0a55550c86684ffec"
-  integrity sha512-Jg1F+bmxcpENHP23sVKkNuU3uaxPnsBMW0cLjleiikFKomJQbsn0Cqk2yDvQArqzZN6ABfBkZ0To7pQ8sLdWDg==
+"@types/node@14.0.26":
+  version "14.0.26"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.26.tgz#22a3b8a46510da8944b67bfc27df02c34a35331c"
+  integrity sha512-W+fpe5s91FBGE0pEa0lnqGLL4USgpLgs4nokw16SrBBco/gQxuua7KnArSEOd5iaMqbbSHV10vUDkJYJJqpXKA==
 
 estree-walker@^1.0.1:
   version "1.0.1"
