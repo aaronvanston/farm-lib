@@ -20,7 +20,7 @@
     "rollup": "2.26.2",
     "@rollup/plugin-typescript": "4.1.1",
     "tslib": "1.13.0",
-    "typescript": "3.8.3"
+    "typescript": "4.9.5"
   },
   "description": "The farm library behind farm-cli",
   "bugs": {
